@@ -21,7 +21,7 @@ This rely on very few hypothesis (close-by points have a similar distribution of
 
 However, this algorihm cuts the space into cubes and studies the distribution of their rewards : this coarse grained approach does not extract as much information from the alreaddy computed points as something like bayesian optimisation. Which mean that this algorithm would probably not be recommended if the noise is low enough.
 
-Additionnaly, dimensions with low impact on the target function can significantly degrade the search-speed (approach such as [Random EMbedding Bayesian Optimization](https://ml.informatik.uni-freiburg.de/papers/16-JAIR-REMBO.pdf) might be an interesting solution to this problem).
+Additionnaly, dimensions with low impact on the target function can significantly degrade the search-speed (approach such as [Random Embedding Bayesian Optimization](https://ml.informatik.uni-freiburg.de/papers/16-JAIR-REMBO.pdf) might be an interesting solution to this problem).
 
 Problems with several global minimums (and not just small local minimums) tend to lead to divide the search into several points of the search space degrading the efficiency of the algorithm.
 
@@ -37,4 +37,4 @@ Thus, **the ideal target function has a single minimum, no useless input dimenss
 
 ## Reference
 
-I currently do not know wether this algorithm is new (unlikely) or alreaddy exists somewhere in the literature.
+I currently do not know wether this algorithm is new (unlikely) or already exists somewhere in the literature.
