@@ -23,7 +23,7 @@ impl Hypercube
    /// samples a point from an hypercube (using the given fucntion to evaluate it)
    pub fn sample(&self, rng: &mut impl Rng) -> Coordinate
    {
-      println!("{:?}", self.coordinates);
+      //println!("{:?}", self.coordinates);
       self.coordinates
           .iter()
           .map(|(inf, sup)| {

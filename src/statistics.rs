@@ -4,8 +4,6 @@ pub struct Statistics
 {
    sum: f64,
    sum_squares: f64,
-   min: f64,
-   max: f64,
    pub n: usize
 }
 
@@ -16,10 +14,8 @@ impl Statistics
    {
       let sum = value;
       let sum_squares = value * value;
-      let min = value;
-      let max = value;
       let n = 1;
-      Statistics { sum, sum_squares, min, max, n }
+      Statistics { sum, sum_squares, n }
    }
 
    /// adds a value to the statistics
@@ -28,14 +24,6 @@ impl Statistics
       self.sum += value;
       self.sum_squares += value * value;
       self.n += 1;
-      if value > self.max
-      {
-         self.max = value;
-      }
-      else if value < self.min
-      {
-         self.min = value
-      }
    }
 
    /// computes the mean of the scores so far
