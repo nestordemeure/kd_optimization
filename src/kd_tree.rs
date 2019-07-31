@@ -3,7 +3,7 @@ use crate::statistics::*;
 use rand::Rng;
 
 /// represents a partitionning of the space
-enum KDTree
+pub enum KDTree
 {
    /// this hypercube has never been explored
    Empty(Hypercube),
@@ -22,7 +22,7 @@ enum KDTree
 impl KDTree
 {
    /// creates a new, empty, kdTree to explre the given hypercube
-   fn new(coordinates: Vec<(f64, f64)>) -> KDTree
+   pub fn new(coordinates: Vec<(f64, f64)>) -> KDTree
    {
       let hypercube = Hypercube { coordinates };
       KDTree::Empty(hypercube)
@@ -30,7 +30,7 @@ impl KDTree
 
    /// explores a KDTree using the given function and random number generator
    /// returns the point generated and an updated kdtree
-   fn explore(self, f: impl Fn(&Coordinate) -> f64, rng: &mut impl Rng) -> (KDTree, Point)
+   pub fn explore(self, f: &impl Fn(&[f64]) -> f64, rng: &mut impl Rng) -> (KDTree, Point)
    {
       match self
       {
