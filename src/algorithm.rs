@@ -17,7 +17,7 @@ pub fn maximize(f: impl Fn(&[f64]) -> f64, hypercube: Vec<(f64, f64)>, nb_iter: 
       if new_point.value > best_point.value
       {
          best_point = new_point;
-         println!("{}: found {} in {:?}", _iter, best_point.value, best_point.coordinate);
+         //println!("{}: found {} in {:?}", _iter, best_point.value, best_point.coordinate);
       }
    }
 

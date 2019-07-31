@@ -8,12 +8,12 @@ fn main()
    let nb_iter = 1000;
 
    {
+      // this function is particularly noisy
       const DIM: usize = 5;
       let hypercube = vec![(-32.768, 32.768); DIM];
       let f = argmin_testfunctions::ackley;
-      let (coordinate, value) = algorithm::minimize(f, hypercube, nb_iter);
-      println!("Finished! found {} in {:?} (target:0)", value, coordinate);
-      //println!("Finished! found {} (target:0)", value);
+      let (_coordinate, value) = algorithm::minimize(f, hypercube, nb_iter);
+      println!("Finished! found {} (target:0)", value);
    }
 
    {
@@ -24,6 +24,7 @@ fn main()
    }
 
    {
+      // this function has several similar minimums
       let hypercube = vec![(-5., 5.), (-5., 5.)];
       let f = argmin_testfunctions::himmelblau;
       let (coordinate, value) = algorithm::minimize(f, hypercube, nb_iter);
