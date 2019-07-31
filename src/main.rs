@@ -5,11 +5,29 @@ mod algorithm;
 
 fn main()
 {
+   let nb_iter = 1000;
+
    {
-      let nb_iter = 30;
-      let hypercube = vec![(-32.768, 32.768), (-32.768, 32.768)];
+      const DIM: usize = 5;
+      let hypercube = vec![(-32.768, 32.768); DIM];
       let f = argmin_testfunctions::ackley;
       let (coordinate, value) = algorithm::minimize(f, hypercube, nb_iter);
-      println!("Finished! found {} in {:?}", value, coordinate);
+      println!("Finished! found {} in {:?} (target:0)", value, coordinate);
    }
+
+   /*{
+      let nb_iter = 300;
+      let hypercube = vec![(0., 1.), (0., 1.)];
+      let f = argmin_testfunctions::picheny;
+      let (coordinate, value) = algorithm::minimize(f, hypercube, nb_iter);
+      println!("Finished! found {} in {:?} (target:-3.3851993182036826)", value, coordinate);
+   }*/
+
+   /*{
+      let nb_iter = 300;
+      let hypercube = vec![(-5., 5.), (-5., 5.)];
+      let f = argmin_testfunctions::himmelblau;
+      let (coordinate, value) = algorithm::minimize(f, hypercube, nb_iter);
+      println!("Finished! found {} in {:?} (target:0)", value, coordinate);
+   }*/
 }

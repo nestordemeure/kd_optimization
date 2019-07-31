@@ -69,7 +69,7 @@ impl KDTree
          KDTree::Split { right, mut stat_right, left, mut stat_left } =>
          {
             let n_root = stat_right.n + stat_left.n;
-            if stat_right.score(rng, n_root) > stat_left.score(rng, n_root)
+            if stat_right.score(n_root) > stat_left.score(n_root)
             {
                let (right, point) = right.explore(f, rng);
                stat_right.update(point.value);

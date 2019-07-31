@@ -1,6 +1,4 @@
 //! Algorithm used to choose a branch or another.
-use rand::Rng;
-use statrs::distribution::{Normal, Continuous, Univariate};
 
 pub struct Statistics
 {
@@ -62,46 +60,13 @@ impl Statistics
       }
    }
 
-   /// computes a score using the thompson max formula
-   fn score_thompson(&self, rng: &mut impl Rng) -> f64
-   {
-      let n = self.n as f64;
-      let mean = self.mean();
-      let sup = (n + 1.).ln() * self.max;
-      mean + (sup - mean) * rng.gen::<f64>()
-   }
-
    /// computes a score using the ucb-tuned formula
-   fn score_ucb(&self, n_root: usize) -> f64
+   /// the higher the better
+   pub fn score(&self, n_root: usize) -> f64
    {
       let n_root = n_root as f64;
       let n = self.n as f64;
       let c = self.variance() + (2. * n_root.ln() / n).sqrt();
       self.mean() + (c * n_root.ln() / n).sqrt()
-   }
-
-   /// computes a score using the [expected improvement formula](https://thuijskens.github.io/2016/12/29/bayesian-optimisation/)
-   fn score_expected_improvement(&self) -> f64
-   {
-      let std = self.variance().sqrt();
-      if std == 0.
-      {
-         0.
-      }
-      else
-      {
-         let normal = Normal::new(0.0, 1.0).unwrap();
-         let mean = self.mean();
-         let z = (mean - self.max) / std;
-         (mean - self.max) * normal.cdf(z) + std * normal.pdf(z)
-      }
-   }
-
-   /// computes the score of the statistics, the higher the better
-   pub fn score(&self, rng: &mut impl Rng, n_root: usize) -> f64
-   {
-      self.score_thompson(rng)
-      //self.score_ucb(n_root)
-      //self.score_expected_improvement()
    }
 }
