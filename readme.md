@@ -1,7 +1,5 @@
 # KD Optimization
 
-**This is a work in progress!**
-
 This is a blackbox optimization algorithm that partition the space using a [kd-tree](https://en.wikipedia.org/wiki/K-d_tree) and performs the search using [Monte-Carlo tree search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search).
 
 ## Algorithm
@@ -29,15 +27,13 @@ Problems with several global minimums (and not just small local minimums) tend t
 
 Thus, **the ideal target function has a single minimum, no useless input dimenssions and is very noisy**.
 
-## Potential improvements
-
-- Turn code into a library.
+## TODO
 
 - Map input to unit hypercube in order to avoid giving too much weight to dimenssions that are large in the original search space.
 
-- Provide iterator interface.
-
 - We could add a function that initialise the search from an existing set of points.
+
+- Add proper examples to readme and doc (in the meantime, see `main.rs`).
 
 ## Reference
 

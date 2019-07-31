@@ -1,11 +1,11 @@
 [package]
 name = "kd_optimization"
 version = "0.1.0"
-authors = ["Nestor Demeure <nestor@nestor-HP-ProBook-650-G1>"]
+authors = ["Nestor Demeure"]
 edition = "2018"
 
 [dependencies]
-rand = "0.6.5"
-rand_xoshiro = "0.1.0"
+rand = "0.7.0"
+rand_xoshiro = "0.3.0"
 argmin_testfunctions = "0.1.1"
 ordered-float = "1.0.2"

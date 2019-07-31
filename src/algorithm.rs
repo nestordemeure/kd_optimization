@@ -1,6 +1,6 @@
 use crate::kd_tree::*;
 use crate::hypercube::{Coordinate, Point};
-use rand::FromEntropy;
+use rand::SeedableRng;
 use rand_xoshiro::Xoshiro256Plus;
 
 /// finds a value that maximizes f in a given number of iterations
