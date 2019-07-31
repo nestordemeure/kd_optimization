@@ -44,27 +44,17 @@ impl KDTree
          }
          KDTree::Singleton { hypercube, point } =>
          {
+            // splits the cube so that the point is in the right part
             let (right, left) = hypercube.split();
-            if right.contains(&point.coordinate)
-            {
-               let stat_right = Statistics::new(point.value);
-               let right = KDTree::Singleton { hypercube: right, point: point };
-               let (left, point) = KDTree::Empty(left).explore(f, rng);
-               let stat_left = Statistics::new(point.value);
-               let tree =
-                  KDTree::Split { right: Box::new(right), stat_right, left: Box::new(left), stat_left };
-               (tree, point)
-            }
-            else
-            {
-               let stat_left = Statistics::new(point.value);
-               let left = KDTree::Singleton { hypercube: left, point: point };
-               let (right, point) = KDTree::Empty(right).explore(f, rng);
-               let stat_right = Statistics::new(point.value);
-               let tree =
-                  KDTree::Split { right: Box::new(right), stat_right, left: Box::new(left), stat_left };
-               (tree, point)
-            }
+            let (right, left) = if right.contains(&point.coordinate) { (left, right) } else { (right, left) };
+            // builds right and left trees
+            let stat_left = Statistics::new(point.value);
+            let left = KDTree::Singleton { hypercube: left, point: point };
+            let (right, point) = KDTree::Empty(right).explore(f, rng);
+            let stat_right = Statistics::new(point.value);
+            // fuse all of that
+            let tree = KDTree::Split { right: Box::new(right), stat_right, left: Box::new(left), stat_left };
+            (tree, point)
          }
          KDTree::Split { right, mut stat_right, left, mut stat_left } =>
          {

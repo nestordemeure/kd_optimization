@@ -35,6 +35,12 @@ Thus, **the ideal target function has a single minimum, no useless input dimenss
 
 - Add proper examples to readme and doc (in the meantime, see `main.rs`).
 
+- The tree could be rebuilt (online or at regular intervals)
+so that splits are done on dimensions which have larger difference of mean score between mean results
+(or using an enthropy based score).
+Thus information rich dimensions would get the priority.
+(One could even split with not a dimenssion but the arbitrary plan that maximises this metric)
+
 ## Reference
 
 I currently do not know wether this algorithm is new (unlikely) or already exists somewhere in the literature.
