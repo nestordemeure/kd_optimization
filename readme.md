@@ -2,6 +2,8 @@
 
 This is a blackbox optimization algorithm that partition the space using a [kd-tree](https://en.wikipedia.org/wiki/K-d_tree) and performs the search using [Monte-Carlo tree search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search).
 
+Note that **this algorithm is an experiment** to see wether a particular combinaison of methods would make an efficient black-box optimization algorithm.
+
 ## Algorithm
 
 ### Implementation
